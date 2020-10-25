@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var gravity = 30
+export var gravity = -30
 export var walk_speed = 250
 export var jump_speed = 600
 var movement = Vector2(0, 0)
@@ -29,15 +29,27 @@ func _physics_process(delta):
 	var horinzontal_axis = Input.get_action_strength("right") - Input.get_action_strength("left")
 	movement.x = horinzontal_axis * walk_speed
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		movement.y = -jump_speed
-	elif Input.is_action_just_pressed("jump") and can_double_jump:
-		can_double_jump = false
-		movement.y = -jump_speed
-		$AnimatedSprite.play("idle")
-		$AnimatedSprite.play("jump")
 	
-	move_and_slide(movement, Vector2.UP)
+		
+
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		if $AnimatedSprite.flip_v == false:
+			movement.y = -jump_speed
+		else:
+			movement.y = jump_speed
+	elif Input.is_action_just_pressed("jump") and can_double_jump:
+		if $AnimatedSprite.flip_v == false:
+			movement.y = -jump_speed
+		else:
+			movement.y = jump_speed
+		can_double_jump = false
+	if gravity < 0:
+		
+		$AnimatedSprite.flip_v = 1
+		move_and_slide(movement, Vector2.DOWN)
+	else:
+		$AnimatedSprite.flip_v = 0
+		move_and_slide(movement, Vector2.UP)
 	
 	if is_on_ceiling():
 		movement.y = 0
@@ -65,3 +77,7 @@ func _on_Enimies_dano():
 	time = 0 
 	life -= 1
 	
+
+
+func _on_MorteQueda_body_entered(body):
+	body.queue_free()

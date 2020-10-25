@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="game_jam "
-run/main_scene="res://scenes/Level.tscn"
+run/main_scene="res://scenes/Fase.tscn"
 config/icon="res://icon.png"
 
 [input]

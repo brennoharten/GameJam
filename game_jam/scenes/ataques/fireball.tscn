@@ -1,13 +1,14 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/texture_atlas/fireball.tres" type="Texture" id=1]
+[ext_resource path="res://assets/texture_atlas/fireball3.tres" type="Texture" id=1]
 [ext_resource path="res://assets/texture_atlas/fireball2.tres" type="Texture" id=2]
-[ext_resource path="res://assets/texture_atlas/fireball3.tres" type="Texture" id=3]
-[ext_resource path="res://nodes/fireball.gd" type="Script" id=4]
+[ext_resource path="res://assets/texture_atlas/fireball.tres" type="Texture" id=3]
+[ext_resource path="res://scripts/ataques/fireball.gd" type="Script" id=4]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "shoot",
 "speed": 10.0
