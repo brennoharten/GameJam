@@ -25,3 +25,5 @@ func _on_Player_damage():
 
 func _on_Boss_kill_the_boss():
 	$Label.text = "YES YOU DID'IT"
+
+

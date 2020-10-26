@@ -23,7 +23,10 @@ func _physics_process(delta):
 	if !is_on_floor():
 		movement.y += gravity
 	else:
-		movement.y = 1
+		if gravity > 0:
+			movement.y = 1
+		else:
+			movement.y = -1
 		can_double_jump = true
 	
 	var horinzontal_axis = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -89,5 +92,6 @@ func reset():
 	position.x = 250
 	position.y = 400
 	
-func invert_gravity():
-	gravity *= -1
+#Acho q nem vai precisar
+#func invert_gravity():
+#	gravity *= -1
