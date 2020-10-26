@@ -19,20 +19,20 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "walk",
-"speed": 15.0
+"frames": [ ExtResource( 2 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "dead",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": false,
 "name": "jump",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 7 ) ],
-"loop": false,
-"name": "dead",
-"speed": 5.0
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "walk",
+"speed": 8.0
 } ]
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -48,8 +48,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
-animation = "walk"
-frame = 1
+animation = "idle"
 playing = true
 __meta__ = {
 "_editor_description_": ""
@@ -58,3 +57,8 @@ __meta__ = {
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 limit_left = 0
+limit_top = -255
+limit_right = 3000
+limit_bottom = 640
+smoothing_enabled = true
+editor_draw_limits = true

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var gravity = -30
+export var gravity = 30
 export var walk_speed = 250
 export var jump_speed = 600
 var movement = Vector2(0, 0)
@@ -80,4 +80,14 @@ func _on_Enimies_dano():
 
 
 func _on_MorteQueda_body_entered(body):
-	body.queue_free()
+	emit_signal("damage")
+	time = 0 
+	life -= 1
+	reset()
+	
+func reset():
+	position.x = 250
+	position.y = 400
+	
+func invert_gravity():
+	gravity *= -1
