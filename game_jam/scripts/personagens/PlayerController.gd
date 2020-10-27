@@ -74,23 +74,8 @@ func update_animations():
 	else:
 		$AnimatedSprite.play("jump")
 	
-	
-func _on_Enimies_dano():
-	emit_signal("damage")
-	time = 0 
-	life -= 1
-	
 
 
-func _on_MorteQueda_body_entered(body):
-	emit_signal("damage")
-	time = 0 
-	life -= 1
-	reset()
-	
-func reset():
-	position.x = 250
-	position.y = 400
 	
 #Acho q nem vai precisar
 #func invert_gravity():

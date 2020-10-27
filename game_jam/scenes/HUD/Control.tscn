@@ -1,20 +1,24 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/atlas/Super-Mario-World.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/HUD/Score.gd" type="Script" id=2]
 [ext_resource path="res://windows_command_prompt.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 40
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 60
-font_data = ExtResource( 1 )
+[sub_resource type="DynamicFont" id=3]
+size = 70
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 70
+font_data = ExtResource( 3 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -33,7 +37,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "0
 "
 __meta__ = {
@@ -43,7 +47,7 @@ __meta__ = {
 [node name="score" type="Label" parent="CanvasLayer"]
 margin_right = 256.0
 margin_bottom = 128.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Coins 
 life "
 align = 1
@@ -57,7 +61,7 @@ margin_left = 208.0
 margin_top = 40.0
 margin_right = 464.0
 margin_bottom = 168.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "0 
 "
 __meta__ = {
@@ -69,18 +73,38 @@ margin_left = 208.0
 margin_top = 64.0
 margin_right = 464.0
 margin_bottom = 192.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "3"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+margin_top = 300.0
 margin_right = 1024.0
-margin_bottom = 600.0
-custom_fonts/font = SubResource( 2 )
-align = 1
-valign = 1
+margin_bottom = 394.0
+custom_constants/separation = 50
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Nova_partida" type="Button" parent="HBoxContainer"]
+margin_left = 221.0
+margin_right = 611.0
+margin_bottom = 94.0
+custom_fonts/font = SubResource( 3 )
+text = "Nova partida"
+
+[node name="Sair" type="Button" parent="HBoxContainer"]
+margin_left = 661.0
+margin_right = 803.0
+margin_bottom = 94.0
+custom_fonts/font = SubResource( 4 )
+text = "Sair"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="HBoxContainer/Nova_partida" to="." method="_on_Nova_partida_pressed"]
+[connection signal="pressed" from="HBoxContainer/Sair" to="." method="_on_Sair_pressed"]
