@@ -19,11 +19,6 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 7 ) ],
-"loop": false,
-"name": "dead",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": false,
 "name": "jump",
@@ -33,6 +28,11 @@ animations = [ {
 "loop": true,
 "name": "walk",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "dead",
+"speed": 5.0
 } ]
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -58,7 +58,7 @@ __meta__ = {
 current = true
 limit_left = 0
 limit_top = -255
-limit_right = 4000
+limit_right = 7000
 limit_bottom = 640
 smoothing_enabled = true
 editor_draw_limits = true

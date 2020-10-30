@@ -79,7 +79,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 visible = false
 margin_top = 300.0
 margin_right = 1024.0
@@ -90,14 +90,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Nova_partida" type="Button" parent="HBoxContainer"]
+[node name="Nova_partida" type="Button" parent="CanvasLayer/HBoxContainer"]
 margin_left = 221.0
 margin_right = 611.0
 margin_bottom = 94.0
 custom_fonts/font = SubResource( 3 )
 text = "Nova partida"
 
-[node name="Sair" type="Button" parent="HBoxContainer"]
+[node name="Sair" type="Button" parent="CanvasLayer/HBoxContainer"]
 margin_left = 661.0
 margin_right = 803.0
 margin_bottom = 94.0
@@ -106,5 +106,5 @@ text = "Sair"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="HBoxContainer/Nova_partida" to="." method="_on_Nova_partida_pressed"]
-[connection signal="pressed" from="HBoxContainer/Sair" to="." method="_on_Sair_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Nova_partida" to="." method="_on_Nova_partida_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Sair" to="." method="_on_Sair_pressed"]

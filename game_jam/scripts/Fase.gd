@@ -24,12 +24,14 @@ func _on_Timer_timeout():
 
 
 func _on_MorteQueda_body_entered(body):
+	$MorteSom.play()
 	vida -= 1
 	$Control/CanvasLayer/life.set_text(str(vida))
 	if vida > 0:
 		reset_player()
 	else:
-		$Control/HBoxContainer.show()
+		$Control/CanvasLayer/HBoxContainer.show()
+	
 
 func reset_player():
 	$Player.position.x = 250
@@ -47,7 +49,7 @@ func reset_game():
 
 
 func _on_Control_nova_partida():
-	$Control/HBoxContainer.hide()
+	$Control/CanvasLayer/HBoxContainer.hide()
 	reset_game()
 
 
