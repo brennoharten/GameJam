@@ -77,6 +77,4 @@ func update_animations():
 
 
 	
-#Acho q nem vai precisar
-#func invert_gravity():
-#	gravity *= -1
+

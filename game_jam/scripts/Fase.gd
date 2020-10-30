@@ -19,8 +19,9 @@ func _ready():
 func _on_Timer_timeout():
 	tempo += 1
 	$Control/CanvasLayer/Tempo.set_text(str(tempo))
-	if tempo == 12:
+	if tempo == 15:
 		$Player.gravity *= -1
+		tempo = 0
 
 
 func _on_MorteQueda_body_entered(body):
@@ -55,3 +56,5 @@ func _on_Control_nova_partida():
 
 func _on_Control_sair():
 	get_tree().quit()
+
+

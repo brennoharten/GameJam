@@ -8,6 +8,7 @@ var movement = Vector2((walk_speed), 0)
 signal dano()
 
 func _physics_process(delta):
+	
 	time += 1
 	var collision = move_and_collide(-movement, walk_speed)
 	$AnimatedSprite.play("walk")
