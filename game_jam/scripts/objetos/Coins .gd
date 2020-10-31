@@ -1,6 +1,4 @@
-extends StaticBody2D
-
-export var life = 3 
+extends Area2D
 
 signal get_a_coin()
 # Called when the node enters the scene tree for the first time.
@@ -8,13 +6,7 @@ func _ready():
 	pass # Replace with function body.
 
 
-
-func _on_Area2D_body_entered(body):
+func _on_Coins__body_entered(body):
 	if body.is_in_group("Player"):
-		if life > 1:
-			$coinsAnimated.play("up")
-			emit_signal("get_a_coin")
-		life -= 1
-		if life <= 0:
-			queue_free()
-		
+		emit_signal("get_a_coin")
+		queue_free()

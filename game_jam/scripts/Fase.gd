@@ -5,6 +5,7 @@ extends Node2D
 # var a = 2
 var vida = 3
 var tempo = 0
+var coins = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +24,14 @@ func _on_Timer_timeout():
 		$Player.gravity *= -1
 		tempo = 0
 
+func _on_MorteQueda2_body_entered(body):
+	$MorteSom.play()
+	vida -= 1
+	$Control/CanvasLayer/life.set_text(str(vida))
+	if vida > 0:
+		reset_player()
+	else:
+		$Control/CanvasLayer/HBoxContainer.show()
 
 func _on_MorteQueda_body_entered(body):
 	$MorteSom.play()
@@ -58,3 +67,6 @@ func _on_Control_sair():
 	get_tree().quit()
 
 
+func _on_Coins__get_a_coin():
+	coins += 1
+	$Control/CanvasLayer/coins.set_text(str(coins))
