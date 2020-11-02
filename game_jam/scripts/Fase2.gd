@@ -2,9 +2,7 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-# var a = 2
-var tempo = 0
-var coins = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,12 +14,21 @@ func _ready():
 #	pass
 
 
-func _on_Timer_timeout():
-	tempo += 1
-	$Control/CanvasLayer/Tempo.set_text(str(tempo))
-	if tempo == 15:
-		$Player.gravity *= -1
-		tempo = 0
+func _on_Luigi_dano():
+	$Player.life -= 1
+	$Control/CanvasLayer/life.set_text(str($Player.life))
+	if $Player.life <= 0:
+		$Control/CanvasLayer/HBoxContainer.show()
+		$Player.queue_free()
+
+func _on_MorteQueda_body_entered(body):
+	$Player.life -= 1
+	$Control/CanvasLayer/life.set_text(str($Player.life))
+	if $Player.life > 0:
+		reset_player()
+	else:
+		$Control/CanvasLayer/HBoxContainer.show()
+
 
 func _on_MorteQueda2_body_entered(body):
 	$Player.life -= 1
@@ -31,43 +38,23 @@ func _on_MorteQueda2_body_entered(body):
 	else:
 		$Control/CanvasLayer/HBoxContainer.show()
 
-func _on_MorteQueda_body_entered(body):
-	$Player.life -= 1
-	$Control/CanvasLayer/life.set_text(str($Player.life))
-	if $Player.life > 0:
-		reset_player()
-	else:
-		$Control/CanvasLayer/HBoxContainer.show()
-	
-
 func reset_player():
-	$Player.position.x = 250
+	$Player.position.x = 200
 	$Player.position.y = 400
-	tempo = 0
 	$Player.gravity = 30
 
 func reset_game():
-	$Player.life = 3
 	$Player.position.x = 250
 	$Player.position.y = 400
-	tempo = 0
 	$Player.gravity = 30
+	$Player.life = 3
 	$Control/CanvasLayer/life.set_text(str($Player.life))
 
 
 func _on_Control_nova_partida():
 	$Control/CanvasLayer/HBoxContainer.hide()
 	reset_game()
-
+	
 
 func _on_Control_sair():
 	get_tree().quit()
-
-
-func _on_Coins__get_a_coin():
-	coins += 1
-	$Control/CanvasLayer/coins.set_text(str(coins))
-
-
-func _on_BuracoNegro_body_entered(body):
-	get_tree().change_scene("res://scenes/Fase2.tscn")
