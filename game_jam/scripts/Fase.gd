@@ -70,3 +70,7 @@ func _on_Control_sair():
 func _on_Coins__get_a_coin():
 	coins += 1
 	$Control/CanvasLayer/coins.set_text(str(coins))
+
+
+func _on_BuracoNegro_body_entered(body):
+	get_tree().change_scene("res://scenes/Fase2.tscn")
