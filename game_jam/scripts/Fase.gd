@@ -24,9 +24,16 @@ func _on_Timer_timeout():
 		tempo = 0
 
 func _on_MorteQueda2_body_entered(body):
+<<<<<<< HEAD
 	$Player.life -= 1
 	$Control/CanvasLayer/life.set_text(str($Player.life))
 	if $Player.life > 0:
+=======
+	$MorteSom.play()  
+	vida -= 1
+	$Control/CanvasLayer/life.set_text(str(vida))
+	if vida > 0:
+>>>>>>> 5566d3562abc52ed319758a9b9f155f1a206868d
 		reset_player()
 	else:
 		$Control/CanvasLayer/HBoxContainer.show()
@@ -71,3 +78,12 @@ func _on_Coins__get_a_coin():
 
 func _on_BuracoNegro_body_entered(body):
 	get_tree().change_scene("res://scenes/Fase2.tscn")
+
+
+func _on_Enimies2_dano():
+	pass # Replace with function body.
+
+
+func _on_Star_get_a_Star():
+	coins += 5
+	$Control/CanvasLayer/coins.set_text(str(coins))

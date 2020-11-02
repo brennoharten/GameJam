@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/atlas/sdtar_mario.png" type="Texture" id=1]
+[ext_resource path="res://scripts/objetos/Star.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 58.0775
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "loop",
+"speed": 15.0
+} ]
+
+[sub_resource type="Animation" id=9]
+resource_name = "up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2.52269, 0.420448 ), Vector2( -2.523, -300 ), Vector2( -2.52269, 0.420448 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 26.8159, 33.9793 )
+
+[node name="Star" type="StaticBody2D"]
+scale = Vector2( 0.25, 0.25 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.522692, -0.579551 )
+scale = Vector2( 0.533333, 0.526786 )
+frames = SubResource( 8 )
+animation = "loop"
+playing = true
+
+[node name="coinsAnimated" type="AnimationPlayer" parent="."]
+anims/up = SubResource( 9 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = -2147483646
+position = Vector2( -1.88778, 73.6222 )
+shape = SubResource( 10 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
