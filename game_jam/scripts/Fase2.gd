@@ -53,7 +53,8 @@ func reset_game():
 
 func _on_Control_nova_partida():
 	$Control/CanvasLayer/HBoxContainer.hide()
-	reset_game()
+	get_tree().change_scene("res://scenes/Fase.tscn")
+
 	
 
 func _on_Control_sair():
