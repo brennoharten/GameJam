@@ -1,5 +1,6 @@
 [gd_scene load_steps=32 format=2]
 
+
 [ext_resource path="res://scenes/personagens/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/atlas/mariotile.png" type="Texture" id=2]
 [ext_resource path="res://scenes/HUD/Control.tscn" type="PackedScene" id=3]
@@ -9,7 +10,6 @@
 [ext_resource path="res://scenes/objetos/Block(1).tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/Fase.gd" type="Script" id=8]
 [ext_resource path="res://assets/atlas/BuracoNegro.png" type="Texture" id=9]
-[ext_resource path="res://scenes/objetos/Star.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -618,7 +618,6 @@ extents = Vector2( 4564.93, 45.5524 )
 extents = Vector2( 58.0918, 61.0616 )
 
 [node name="Fase" type="Node2D"]
-position = Vector2( 1, 0 )
 script = ExtResource( 8 )
 
 [node name="Sky_TileMap1" type="TileMap" parent="."]
@@ -757,6 +756,7 @@ position = Vector2( 4144.13, 222.035 )
 
 [node name="Block6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 4176.34, 222.035 )
+
 [connection signal="body_entered" from="MorteQueda" to="." method="_on_MorteQueda_body_entered"]
 [connection signal="body_entered" from="MorteQueda2" to="." method="_on_MorteQueda2_body_entered"]
 [connection signal="nova_partida" from="Control" to="." method="_on_Control_nova_partida"]
@@ -776,3 +776,4 @@ position = Vector2( 4176.34, 222.035 )
 [connection signal="body_entered" from="BuracoNegro" to="." method="_on_BuracoNegro_body_entered"]
 [connection signal="get_a_Star" from="Star" to="." method="_on_Star_get_a_Star"]
 [connection signal="get_a_Star" from="Star2" to="." method="_on_Star_get_a_Star"]
+
