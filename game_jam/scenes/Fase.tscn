@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/personagens/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/atlas/mariotile.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/objetos/Block(1).tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/Fase.gd" type="Script" id=8]
 [ext_resource path="res://assets/atlas/BuracoNegro.png" type="Texture" id=9]
+[ext_resource path="res://scenes/objetos/Star.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -507,6 +508,7 @@ extents = Vector2( 4564.93, 45.5524 )
 extents = Vector2( 58.0918, 61.0616 )
 
 [node name="Fase" type="Node2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 8 )
 
 [node name="Sky_TileMap1" type="TileMap" parent="."]
@@ -609,11 +611,24 @@ shape = SubResource( 17 )
 
 [node name="Sprite" type="Sprite" parent="BuracoNegro"]
 texture = ExtResource( 9 )
+
+[node name="Star" parent="." instance=ExtResource( 10 )]
+position = Vector2( 290.073, 82.7807 )
+
+[node name="Block" parent="." instance=ExtResource( 5 )]
+position = Vector2( 290.964, 83.6716 )
+
+[node name="Block2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 323.036, 83.6716 )
+
+[node name="Block3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 355.109, 83.6716 )
 [connection signal="body_entered" from="MorteQueda" to="." method="_on_MorteQueda_body_entered"]
 [connection signal="body_entered" from="MorteQueda2" to="." method="_on_MorteQueda2_body_entered"]
 [connection signal="nova_partida" from="Control" to="." method="_on_Control_nova_partida"]
 [connection signal="sair" from="Control" to="." method="_on_Control_sair"]
 [connection signal="dano" from="Enimies" to="." method="_on_Enimies_dano"]
+[connection signal="dano" from="Enimies2" to="." method="_on_Enimies2_dano"]
 [connection signal="get_a_coin" from="Coins " to="." method="_on_Coins__get_a_coin"]
 [connection signal="get_a_coin" from="Coins 2" to="." method="_on_Coins__get_a_coin"]
 [connection signal="get_a_coin" from="Coins 3" to="." method="_on_Coins__get_a_coin"]
@@ -621,3 +636,4 @@ texture = ExtResource( 9 )
 [connection signal="get_a_coin" from="Coins 5" to="." method="_on_Coins__get_a_coin"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="BuracoNegro" to="." method="_on_BuracoNegro_body_entered"]
+[connection signal="get_a_Star" from="Star" to="." method="_on_Star_get_a_Star"]
