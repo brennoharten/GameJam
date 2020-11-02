@@ -33,6 +33,7 @@ func _on_MorteQueda2_body_entered(body):
 		$Control/CanvasLayer/HBoxContainer.show()
 
 func _on_MorteQueda_body_entered(body):
+
 	$Player.life -= 1
 	$Control/CanvasLayer/life.set_text(str($Player.life))
 	if $Player.life > 0:
@@ -73,10 +74,15 @@ func _on_BuracoNegro_body_entered(body):
 	get_tree().change_scene("res://scenes/Fase2.tscn")
 
 
-func _on_Enimies2_dano():
-	pass # Replace with function body.
-
-
 func _on_Star_get_a_Star():
 	coins += 5
 	$Control/CanvasLayer/coins.set_text(str(coins))
+
+
+func _on_Enimies_dano():
+	vida -= 1
+	$Control/CanvasLayer/life.set_text(str(vida))
+	if vida > 0:
+		reset_player()
+	else:
+		$Control/CanvasLayer/HBoxContainer.show()
