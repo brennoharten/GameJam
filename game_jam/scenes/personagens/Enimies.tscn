@@ -40,7 +40,6 @@ __meta__ = {
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
 animation = "walk"
-frame = 1
 playing = true
 
 [node name="up" type="Area2D" parent="."]

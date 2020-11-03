@@ -3,7 +3,6 @@ extends Node2D
 
 # Declare member variables here. Examples:
 # var a = 2
-var vida = 3
 var tempo = 0
 var coins = 0
 
@@ -25,19 +24,18 @@ func _on_Timer_timeout():
 		tempo = 0
 
 func _on_MorteQueda2_body_entered(body):
-	$MorteSom.play()  
-	vida -= 1
-	$Control/CanvasLayer/life.set_text(str(vida))
-	if vida > 0:
+	$Player.life -= 1
+	$Control/CanvasLayer/life.set_text(str($Player.life))
+	if $Player.life > 0: 
+		$Control/CanvasLayer/life.set_text(str($Player.life))
 		reset_player()
 	else:
 		$Control/CanvasLayer/HBoxContainer.show()
 
 func _on_MorteQueda_body_entered(body):
-	$MorteSom.play()
-	vida -= 1
-	$Control/CanvasLayer/life.set_text(str(vida))
-	if vida > 0:
+	$Player.life -= 1
+	$Control/CanvasLayer/life.set_text(str($Player.life))
+	if $Player.life > 0:
 		reset_player()
 	else:
 		$Control/CanvasLayer/HBoxContainer.show()
@@ -50,17 +48,16 @@ func reset_player():
 	$Player.gravity = 30
 
 func reset_game():
+	$Player.life = 3
 	$Player.position.x = 250
 	$Player.position.y = 400
 	tempo = 0
 	$Player.gravity = 30
-	vida = 3
-	$Control/CanvasLayer/life.set_text(str(vida))
+	$Control/CanvasLayer/life.set_text(str($Player.life))
 
 
 func _on_Control_nova_partida():
-	$Control/CanvasLayer/HBoxContainer.hide()
-	reset_game()
+	get_tree().reload_current_scene()
 
 
 func _on_Control_sair():
@@ -75,11 +72,16 @@ func _on_Coins__get_a_coin():
 func _on_BuracoNegro_body_entered(body):
 	get_tree().change_scene("res://scenes/Fase2.tscn")
 
-
-func _on_Enimies2_dano():
-	pass # Replace with function body.
+func _on_Enimies_dano():
+	$Player.life -= 1
+	$Control/CanvasLayer/life.set_text(str($Player.life))
+	if $Player.life > 0:
+		reset_player()
+	else:
+		$Control/CanvasLayer/HBoxContainer.show()
 
 
 func _on_Star_get_a_Star():
 	coins += 5
 	$Control/CanvasLayer/coins.set_text(str(coins))
+

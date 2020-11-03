@@ -4,7 +4,7 @@ export var gravity = 30
 export var walk_speed = 250
 export var jump_speed = 600
 var movement = Vector2(0, 0)
-export var life = 3
+export var life = 4
 var time = 0 
 signal game_over()
 signal damage()
