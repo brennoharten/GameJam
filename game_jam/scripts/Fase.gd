@@ -47,14 +47,6 @@ func reset_player():
 	tempo = 0
 	$Player.gravity = 30
 
-func reset_game():
-	$Player.life = 3
-	$Player.position.x = 250
-	$Player.position.y = 400
-	tempo = 0
-	$Player.gravity = 30
-	$Control/CanvasLayer/life.set_text(str($Player.life))
-
 
 func _on_Control_nova_partida():
 	get_tree().reload_current_scene()
