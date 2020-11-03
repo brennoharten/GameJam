@@ -7,6 +7,8 @@ var direcao = 1
 var tempoLado = 0
 var damage = 0
 signal dano()
+signal morte()
+
 
 func _physics_process(delta):
 	time += delta
@@ -20,7 +22,7 @@ func _physics_process(delta):
 	var collision = move_and_collide(-movement, walk_speed)
 	
 	if collision:
-		if collision.collider.is_in_group("Player") and damage == 1 and  time > 0.7:
+		if collision.collider.is_in_group("Player") and damage == 1 and  time > 0.4:
 			$AnimatedSprite.play("attack")
 			emit_signal("dano")
 			time = 0
@@ -40,3 +42,7 @@ func update_animations():
 
 func _on_Area2D_body_entered(body):
 	damage = 1
+
+
+func _on_Morte_body_entered(body):
+	queue_free()

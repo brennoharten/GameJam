@@ -2,7 +2,7 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-
+var coins = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,6 +20,7 @@ func _on_Luigi_dano():
 	if $Player.life <= 0:
 		$Control/CanvasLayer/HBoxContainer.show()
 		$Player.queue_free()
+	
 
 func _on_MorteQueda_body_entered(body):
 	$Player.life -= 1
@@ -59,3 +60,24 @@ func _on_Control_nova_partida():
 
 func _on_Control_sair():
 	get_tree().quit()
+
+
+func _on_Coins__get_a_coin():
+	coins += 1
+	$Control/CanvasLayer/coins.set_text(str(coins))
+
+
+func _on_Wario_dano():
+	$Player.life -= 1
+	$Control/CanvasLayer/life.set_text(str($Player.life))
+	if $Player.life <= 0:
+		$Control/CanvasLayer/HBoxContainer.show()
+		$Player.queue_free()
+
+
+func _on_Player_hit():
+	$Player.life -= 1
+	$Control/CanvasLayer/life.set_text(str($Player.life))
+	if $Player.life <= 0:
+		$Control/CanvasLayer/HBoxContainer.show()
+		$Player.queue_free()

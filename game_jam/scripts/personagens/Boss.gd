@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 export var gravity = 10
 var movement = Vector2(0, 0)
-export var life = 5
+export var life = 3
 var time = 0 
-const FIREBALL = preload("res://nodes/fireball.tscn")
+const FIREBALL = preload("res://scenes/ataques/fireball.tscn")
 var fall = false
 var is_dead = false
 signal kill_the_boss()

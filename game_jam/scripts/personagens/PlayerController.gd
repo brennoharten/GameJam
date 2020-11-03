@@ -4,10 +4,10 @@ export var gravity = 30
 export var walk_speed = 250
 export var jump_speed = 600
 var movement = Vector2(0, 0)
-export var life = 4
+export var life = 3
 var time = 0 
 signal game_over()
-signal damage()
+signal hit()
 
 var can_double_jump = true
 
@@ -73,8 +73,7 @@ func update_animations():
 			$AnimatedSprite.play("idle")
 	else:
 		$AnimatedSprite.play("jump")
-	
 
 
-	
-
+func on_hit():
+	emit_signal("hit")
