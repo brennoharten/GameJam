@@ -802,12 +802,15 @@ position = Vector2( 302.319, 112.455 )
 
 [node name="Block" parent="." instance=ExtResource( 5 )]
 position = Vector2( 303.679, 112.147 )
+life = 3
 
 [node name="Block2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 335.53, 112.147 )
+life = 3
 
 [node name="Block3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 367.484, 112.147 )
+position = Vector2( 368.673, 112.147 )
+life = 3
 
 [node name="BuracoNegro" type="Area2D" parent="."]
 position = Vector2( 6114.61, 439.594 )
