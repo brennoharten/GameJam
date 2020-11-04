@@ -364,6 +364,10 @@ position = Vector2( 5366, 314 )
 stream = ExtResource( 10 )
 volume_db = -10.0
 max_distance = 70000.0
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+autostart = true
 [connection signal="nova_partida" from="Control" to="." method="_on_Control_nova_partida"]
 [connection signal="sair" from="Control" to="." method="_on_Control_sair"]
 [connection signal="get_a_coin" from="Coins " to="." method="_on_Coins__get_a_coin"]
@@ -376,3 +380,4 @@ max_distance = 70000.0
 [connection signal="body_entered" from="MorteQueda2" to="." method="_on_MorteQueda2_body_entered"]
 [connection signal="dano" from="Wario" to="." method="_on_Wario_dano"]
 [connection signal="dano" from="Wario2" to="." method="_on_Wario_dano"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

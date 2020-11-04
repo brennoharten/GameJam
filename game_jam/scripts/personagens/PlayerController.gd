@@ -4,7 +4,6 @@ export var gravity = 30
 export var walk_speed = 250
 export var jump_speed = 600
 var movement = Vector2(0, 0)
-export var life = 4
 var time = 0 
 signal game_over()
 signal hit()
@@ -14,12 +13,6 @@ var can_double_jump = true
 
 func _physics_process(delta):
 	time += 1
-	if life == 0:
-		if time < 30:
-			$AnimatedSprite.play("dead")
-			emit_signal("game_over")
-		else:
-			queue_free()
 	
 	if !is_on_floor():
 		movement.y += gravity
@@ -66,7 +59,7 @@ func update_animations():
 	elif movement.x < 0:
 		$AnimatedSprite.scale.x = -2
 	
-	if is_on_floor() && life > 0:
+	if is_on_floor():
 		if abs(movement.x) > 0:
 			$AnimatedSprite.play("walk")
 		else:

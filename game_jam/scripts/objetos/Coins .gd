@@ -10,6 +10,7 @@ func _ready():
 func _on_Coins__body_entered(body):
 	if body.is_in_group("Player"):
 		$som.play()
+		Global.add_coins(1)
 		emit_signal("get_a_coin")
 		hide()
 		$CollisionShape2D.set_deferred("disabled", true)
