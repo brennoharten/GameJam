@@ -113,15 +113,18 @@ __meta__ = {
 
 [node name="Historia" type="Label" parent="CanvasLayer"]
 visible = false
-margin_left = 256.0
-margin_top = 256.0
-margin_right = 768.0
-margin_bottom = 512.0
+margin_left = 244.108
+margin_top = 200.0
+margin_right = 756.108
+margin_bottom = 456.0
 custom_fonts/font = SubResource( 5 )
 text = "Mario perdeu uma aposta de poker e 
 não pagou seus ex-amigos. Logo, eles 
 capturaram a princesa e mario terá 
-que ir atrás dele para recuperá-la"
+que ir atrás dela para recuperá-la
+
+DICA: A cada 15 s a gravidade muda
+Take Care"
 align = 1
 valign = 1
 __meta__ = {

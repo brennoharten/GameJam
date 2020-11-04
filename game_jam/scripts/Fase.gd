@@ -1,11 +1,13 @@
 extends Node2D
 
-
+var tempoHistoria = 0
 
 func _ready():
+	$Player.walk_speed = 0
 	$Control/CanvasLayer/life.set_text(str(Global.vida))
 	$Control/CanvasLayer/coins.set_text(str(Global.coins))
 	$Control/CanvasLayer/Tempo.set_text(str(Global.tempo))
+	$Control/CanvasLayer/Historia.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -37,7 +39,7 @@ func _on_MorteQueda_body_entered(body):
 	
 
 func reset_player():
-	$Player.position.x = 250
+	$Player.position.x = 150
 	$Player.position.y = 400
 	$Player.gravity = 30
 
@@ -76,5 +78,8 @@ func _on_Star_get_a_Star():
 
 
 func _on_TimerHistoria_timeout():
-	$Control/CanvasLayer/Historia.set_visible(false)
+	$Control/CanvasLayer/Historia.hide()
+	$Player.walk_speed = 250
+	Global.tempo = 0
+	
 	
