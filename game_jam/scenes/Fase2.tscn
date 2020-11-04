@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/personagens/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/HUD/Control.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/personagens/Peach.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/personagens/Wario.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/personagens/Boss.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sons/linking_park (online-audio-converter.com).wav" type="AudioStream" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -358,6 +359,10 @@ position = Vector2( 3418.54, 316.596 )
 
 [node name="Boss" parent="." instance=ExtResource( 9 )]
 position = Vector2( 5366, 314 )
+
+[node name="SomJogo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+max_distance = 70000.0
 [connection signal="nova_partida" from="Control" to="." method="_on_Control_nova_partida"]
 [connection signal="sair" from="Control" to="." method="_on_Control_sair"]
 [connection signal="get_a_coin" from="Coins " to="." method="_on_Coins__get_a_coin"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/texture_atlas/luigiWalk1.tres" type="Texture" id=1]
 [ext_resource path="res://assets/texture_atlas/luigiWalk2.tres" type="Texture" id=2]
@@ -8,25 +8,26 @@
 [ext_resource path="res://assets/texture_atlas/luigiAttack1.tres" type="Texture" id=6]
 [ext_resource path="res://assets/texture_atlas/luigiAttack5.tres" type="Texture" id=7]
 [ext_resource path="res://scripts/personagens/Luigi.gd" type="Script" id=8]
+[ext_resource path="res://sons/dano_luigi (online-audio-converter.com).wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.8308, 20.6551 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "attack",
+"speed": 25.0
+}, {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "attack",
-"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 6.96134, 7.17033 )
+extents = Vector2( 1.6299, 7.17033 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8.71846, 1.75742 )
@@ -42,14 +43,16 @@ shape = SubResource( 1 )
 position = Vector2( 8.61526, 1.49831 )
 frames = SubResource( 2 )
 animation = "walk"
-frame = 1
 playing = true
 flip_h = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="AnimatedSprite"]
+position = Vector2( -8.61526, -1.49831 )
+scale = Vector2( 1.98665, 0.913233 )
 
-[node name="Martelo" type="CollisionShape2D" parent="Area2D"]
+[node name="Martelo" type="CollisionShape2D" parent="AnimatedSprite/Area2D"]
 position = Vector2( -17.8345, 5.09885 )
+scale = Vector2( 5.00265, 1.49284 )
 shape = SubResource( 3 )
 
 [node name="Morte" type="Area2D" parent="."]
@@ -57,5 +60,10 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morte"]
 position = Vector2( 1.41795, -22.6743 )
 shape = SubResource( 4 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+[node name="Martelada" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = 5.0
+pitch_scale = 1.5
+[connection signal="body_entered" from="AnimatedSprite/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Morte" to="." method="_on_Morte_body_entered"]

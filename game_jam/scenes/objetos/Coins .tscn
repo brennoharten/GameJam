@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/atlas/coin.png" type="Texture" id=1]
 [ext_resource path="res://scripts/objetos/Coins .gd" type="Script" id=2]
+[ext_resource path="res://sons/som_moeda.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 41.8637
@@ -54,7 +55,9 @@ tracks/0/keys = {
 "values": [ Vector2( -2.52269, 0.420448 ), Vector2( -2.523, -300 ), Vector2( -2.52269, 0.420448 ) ]
 }
 
-[node name="Coins " type="Area2D"]
+[node name="Coins " type="Area2D" groups=[
+"coin",
+]]
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 2 )
 
@@ -65,9 +68,13 @@ shape = SubResource( 1 )
 position = Vector2( -2.52269, 0.420448 )
 frames = SubResource( 8 )
 animation = "loop"
-frame = 4
+frame = 1
 playing = true
 
 [node name="coinsAnimated" type="AnimationPlayer" parent="."]
 anims/up = SubResource( 9 )
+
+[node name="som" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
 [connection signal="body_entered" from="." to="." method="_on_Coins__body_entered"]

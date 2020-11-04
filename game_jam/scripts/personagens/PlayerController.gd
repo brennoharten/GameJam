@@ -9,6 +9,7 @@ var time = 0
 signal game_over()
 signal hit()
 
+
 var can_double_jump = true
 
 func _physics_process(delta):
@@ -32,10 +33,9 @@ func _physics_process(delta):
 	var horinzontal_axis = Input.get_action_strength("right") - Input.get_action_strength("left")
 	movement.x = horinzontal_axis * walk_speed
 	
-	
-		
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		#$pulo.play()
 		if $AnimatedSprite.flip_v == false:
 			movement.y = -jump_speed
 		else:

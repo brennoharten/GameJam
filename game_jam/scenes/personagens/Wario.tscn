@@ -8,22 +8,22 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32.1232, 35.4775 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 13.6475, 11.8783 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32.1232, 35.4775 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 21.7727, 2.68587 )
@@ -36,19 +36,19 @@ frames = SubResource( 1 )
 animation = "walk"
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+[node name="Maozada" type="Area2D" parent="AnimatedSprite"]
 
-[node name="Maozada" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Maozada"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Maozada"]
 position = Vector2( -47.3746, 8.96362 )
 shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
 
 [node name="Morte" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Morte"]
 position = Vector2( 3.05176e-05, -41.0122 )
 shape = SubResource( 4 )
-[connection signal="body_entered" from="Maozada" to="." method="_on_Maozada_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite/Maozada" to="." method="_on_Maozada_body_entered"]
 [connection signal="body_entered" from="Morte" to="." method="_on_Morte_body_entered"]
