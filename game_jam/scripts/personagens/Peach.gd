@@ -28,11 +28,10 @@ func _physics_process(delta):
 	var collision = move_and_collide(-movement, walk_speed)
 	
 	if collision:
-		movement *= - 1
-		tempoLado = 0
-		direcao *= -1
-		update_animations()
-	
+		if !collision.collider.is_in_group("Player"):
+			movement *= - 1
+			direcao *= -1
+			update_animations()
 	
 	if atirar == 1 and time > 1 and direcao == -1:
 		var tiro = tiro1.instance()
@@ -42,9 +41,9 @@ func _physics_process(delta):
 		time = 0
 	elif atirar == 1 and time > 1 and direcao == 1:
 		var tiro = tiro1.instance()
+		tiro.speed *= -1
 		get_parent().add_child(tiro)
-		tiro.position.x *= -1
-		tiro.position = $AnimatedSprite/Position2D.global_position
+		tiro.position = $AnimatedSprite/Position2D2.global_position
 		$AnimatedSprite.play("attack")
 		time = 0
 	

@@ -1,6 +1,6 @@
 extends Area2D
 
-const speed = 800
+var speed = 800
 var velocity = Vector2()
 var time = 0
 signal matarMario()
