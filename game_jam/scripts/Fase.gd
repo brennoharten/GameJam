@@ -8,7 +8,7 @@ var coins = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Control/CanvasLayer/Historia.set_visible(true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -77,3 +77,8 @@ func _on_Star_get_a_Star():
 	coins += 5
 	$Control/CanvasLayer/coins.set_text(str(coins))
 
+
+
+func _on_TimerHistoria_timeout():
+	$Control/CanvasLayer/Historia.set_visible(false)
+	

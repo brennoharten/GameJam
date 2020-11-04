@@ -3,6 +3,7 @@ extends Control
 signal sair
 signal nova_partida
 
+
 func _ready():
 	pass
 

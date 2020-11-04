@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scenes/personagens/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/atlas/mariotile.png" type="Texture" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://scripts/Fase.gd" type="Script" id=8]
 [ext_resource path="res://assets/atlas/BuracoNegro.png" type="Texture" id=9]
 [ext_resource path="res://scenes/objetos/Star.tscn" type="PackedScene" id=10]
-[ext_resource path="res://sons/somMorrer (online-audio-converter.com).wav" type="AudioStream" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -725,9 +724,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MorteQueda"]
 shape = SubResource( 23 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MorteQueda"]
-stream = ExtResource( 11 )
-
 [node name="MorteQueda2" type="Area2D" parent="."]
 position = Vector2( 3887.97, -301.645 )
 __meta__ = {
@@ -836,6 +832,10 @@ position = Vector2( 4211.88, 201.966 )
 
 [node name="Block6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 4179.93, 201.966 )
+
+[node name="TimerHistoria" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 [connection signal="body_entered" from="MorteQueda" to="." method="_on_MorteQueda_body_entered"]
 [connection signal="body_entered" from="MorteQueda2" to="." method="_on_MorteQueda2_body_entered"]
 [connection signal="nova_partida" from="Control" to="." method="_on_Control_nova_partida"]
@@ -861,3 +861,4 @@ position = Vector2( 4179.93, 201.966 )
 [connection signal="get_a_Star" from="Star2" to="." method="_on_Star_get_a_Star"]
 [connection signal="body_entered" from="BuracoNegro" to="." method="_on_BuracoNegro_body_entered"]
 [connection signal="get_a_Star" from="Star" to="." method="_on_Star_get_a_Star"]
+[connection signal="timeout" from="TimerHistoria" to="." method="_on_TimerHistoria_timeout"]
