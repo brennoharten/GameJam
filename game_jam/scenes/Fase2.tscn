@@ -362,6 +362,7 @@ position = Vector2( 5366, 314 )
 
 [node name="SomJogo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
+volume_db = -10.0
 max_distance = 70000.0
 [connection signal="nova_partida" from="Control" to="." method="_on_Control_nova_partida"]
 [connection signal="sair" from="Control" to="." method="_on_Control_sair"]

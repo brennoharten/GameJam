@@ -5,9 +5,12 @@ extends KinematicBody2D
 var time = 0
 export var walk_speed = 1.5
 var movement = Vector2((walk_speed), 0)
-var direcao = 1
+var direcao = -1
 var tempoLado = 0
 var damage = 0
+const tiro1 = preload("res://scenes/ataques/TiroPeach.tscn")
+var atirar = 0
+
 
 func _ready():
 	pass # Replace with function body.
@@ -19,16 +22,30 @@ func _physics_process(delta):
 	if tempoLado > 3.5:
 		movement *= - 1
 		tempoLado = 0
+		direcao *= -1
 		update_animations()
 	
 	var collision = move_and_collide(-movement, walk_speed)
 	
-	if collision:
-		$AnimatedSprite.play("walk")
-	else:	
-		$AnimatedSprite.play("idle")	
 	
-
+	
+	if atirar == 1 and time > 3 and direcao == -1:
+		var tiro = tiro1.instance()
+		get_parent().add_child(tiro)
+		tiro.position = $AnimatedSprite/Position2D.global_position
+		$AnimatedSprite.play("attack")
+		time = 0
+	elif atirar == 1 and time > 3 and direcao == 1:
+		var tiro = tiro1.instance()
+		get_parent().add_child(tiro)
+		tiro.position.x *= -1
+		tiro.position = $AnimatedSprite/Position2D.global_position
+		$AnimatedSprite.play("attack")
+		time = 0
+	
+	atirar = 0
+	$AnimatedSprite.play("Walk")
+	
 func update_animations():
 	if movement.x > 0:
 		$AnimatedSprite.scale.x = 1
@@ -37,5 +54,8 @@ func update_animations():
 	
 	
 
-
-
+func _on_AtiradorDeMarios_body_entered(body):
+	if body.is_in_group("Player"):
+		atirar = 1
+	
+		

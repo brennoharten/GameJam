@@ -44,4 +44,5 @@ func _on_Morte_body_entered(body):
 
 
 func _on_Maozada_body_entered(body):
-	damage = 1
+	if body.is_in_group("Player"):
+		damage = 1

@@ -41,8 +41,9 @@ func update_animations():
 
 
 func _on_Area2D_body_entered(body):
-	damage = 1
-	$Martelada.play()
+	if body.is_in_group("Player"):
+		damage = 1
+		$Martelada.play()
 
 
 func _on_Morte_body_entered(body):

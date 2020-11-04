@@ -1,15 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/texture_atlas/peach_idle.tres" type="Texture" id=1]
 [ext_resource path="res://assets/texture_atlas/peach_walk1.tres" type="Texture" id=2]
 [ext_resource path="res://assets/texture_atlas/peach_walk2.tres" type="Texture" id=3]
 [ext_resource path="res://scripts/personagens/Peach.gd" type="Script" id=4]
+[ext_resource path="res://assets/texture_atlas/peach_attack.tres" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "attack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ) ],
@@ -19,23 +25,29 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 11.3588, 21.561 )
+extents = Vector2( 127.13, 10 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 240.335, 10 )
+extents = Vector2( 11.3588, 21.561 )
 
 [node name="Peach" type="KinematicBody2D"]
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "Idle"
+animation = "Walk"
+playing = true
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="AtiradorDeMarios" type="Area2D" parent="AnimatedSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/AtiradorDeMarios"]
+position = Vector2( -137.334, 0.943871 )
 shape = SubResource( 2 )
 
-[node name="AtiradorDeMarios" type="Area2D" parent="."]
+[node name="Position2D" type="Position2D" parent="AnimatedSprite"]
+position = Vector2( -14, 0 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AtiradorDeMarios"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+[connection signal="body_entered" from="AnimatedSprite/AtiradorDeMarios" to="." method="_on_AtiradorDeMarios_body_entered"]

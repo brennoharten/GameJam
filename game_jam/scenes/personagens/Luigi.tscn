@@ -11,23 +11,22 @@
 [ext_resource path="res://sons/dano_luigi (online-audio-converter.com).wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.8308, 20.6551 )
+extents = Vector2( 18.2764, 16.5985 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "attack",
-"speed": 25.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "attack",
+"speed": 25.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 1.6299, 7.17033 )
+[sub_resource type="RectangleShape2D" id=5]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8.71846, 1.75742 )
@@ -36,7 +35,7 @@ extents = Vector2( 8.71846, 1.75742 )
 script = ExtResource( 8 )
 
 [node name="Corpo" type="CollisionShape2D" parent="."]
-position = Vector2( 1.87291, 0.374588 )
+position = Vector2( 1.52588e-05, 2.24746 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -48,12 +47,10 @@ flip_h = true
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite"]
 position = Vector2( -8.61526, -1.49831 )
-scale = Vector2( 1.98665, 0.913233 )
 
 [node name="Martelo" type="CollisionShape2D" parent="AnimatedSprite/Area2D"]
-position = Vector2( -17.8345, 5.09885 )
-scale = Vector2( 5.00265, 1.49284 )
-shape = SubResource( 3 )
+position = Vector2( -21.3509, 2.99661 )
+shape = SubResource( 5 )
 
 [node name="Morte" type="Area2D" parent="."]
 
