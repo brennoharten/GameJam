@@ -2,7 +2,7 @@ extends Node
 
 
 var coins = 0
-var vida = 3
+var vida = 4
 var tempo = 0
 
 func _ready():
@@ -20,7 +20,7 @@ func perder_vida():
 	vida -= 1
 
 func reset_vida():
-	vida = 3
+	vida = 4
 
 func reset_tempo():
 	tempo = 0
