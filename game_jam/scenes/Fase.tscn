@@ -725,7 +725,7 @@ __meta__ = {
 shape = SubResource( 23 )
 
 [node name="MorteQueda2" type="Area2D" parent="."]
-position = Vector2( 3887.97, -301.645 )
+position = Vector2( 3887.97, -386.402 )
 __meta__ = {
 "_edit_group_": true
 }

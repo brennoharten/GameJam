@@ -83,3 +83,8 @@ func _on_Timer_timeout():
 	GlobalControl.get_node("CanvasLayer/Tempo").set_text(str(Global.tempo))
 
 
+
+
+func _on_Boss_kill_the_boss():
+	$Portao.hide()
+	$Portao/CollisionShape2D.set_deferred("disabled", true)

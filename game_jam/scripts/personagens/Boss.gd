@@ -14,9 +14,9 @@ func _physics_process(delta):
 	time += 1
 	if is_dead:
 		if time < 30:
+			emit_signal("kill_the_boss")
 			$AnimatedSprite.play("dead")
 		else:
-			emit_signal("kill_the_boss")
 			queue_free()
 	
 	if !is_on_floor() && fall && !is_dead:
