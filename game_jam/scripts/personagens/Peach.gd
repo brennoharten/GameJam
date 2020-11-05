@@ -69,7 +69,7 @@ func _on_AtiradorDeMarios_body_entered(body):
 
 func _on_Morte_body_entered(body):
 	vida -= 1
-	walk_speed += 2
+	walk_speed += 3
 	movement = Vector2((walk_speed), 0)
 	if vida <= 0:
 		GlobalControl.get_node("CanvasLayer/HBoxContainer2").show()
