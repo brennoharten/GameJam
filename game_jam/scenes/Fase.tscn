@@ -2,7 +2,6 @@
 
 [ext_resource path="res://scenes/personagens/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/atlas/mariotile.png" type="Texture" id=2]
-[ext_resource path="res://scenes/HUD/Control.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/personagens/Enimies.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/objetos/Block.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/objetos/Coins .tscn" type="PackedScene" id=6]
@@ -10,6 +9,7 @@
 [ext_resource path="res://scripts/Fase.gd" type="Script" id=8]
 [ext_resource path="res://assets/atlas/BuracoNegro.png" type="Texture" id=9]
 [ext_resource path="res://scenes/objetos/Star.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sons/videoplayback (2) (online-audio-converter.com).wav" type="AudioStream" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -734,13 +734,7 @@ __meta__ = {
 shape = SubResource( 23 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 158.575, 394.941 )
-
-[node name="Control" parent="." instance=ExtResource( 3 )]
-margin_left = 4.85425
-margin_top = 47.1476
-margin_right = 4.85425
-margin_bottom = 47.1476
+position = Vector2( 150, 400 )
 
 [node name="Enimies" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1611.1, 483.881 )
@@ -841,10 +835,14 @@ process_mode = 0
 wait_time = 10.0
 one_shot = true
 autostart = true
+
+[node name="musicaFase1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = -10.0
+autoplay = true
+max_distance = 40000.0
 [connection signal="body_entered" from="MorteQueda" to="." method="_on_MorteQueda_body_entered"]
 [connection signal="body_entered" from="MorteQueda2" to="." method="_on_MorteQueda2_body_entered"]
-[connection signal="nova_partida" from="Control" to="." method="_on_Control_nova_partida"]
-[connection signal="sair" from="Control" to="." method="_on_Control_sair"]
 [connection signal="dano" from="Enimies" to="." method="_on_Enimies_dano"]
 [connection signal="dano" from="Enimies2" to="." method="_on_Enimies_dano"]
 [connection signal="get_a_coin" from="Coins " to="." method="_on_Coins__get_a_coin"]

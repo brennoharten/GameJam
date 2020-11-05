@@ -8,14 +8,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "attack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ) ],
@@ -47,6 +47,10 @@ flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/AtiradorDeMarios"]
 position = Vector2( -336.193, 3.60965 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite/AtiradorDeMarios"]
+position = Vector2( 337.235, -0.17012 )
 shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="AnimatedSprite"]

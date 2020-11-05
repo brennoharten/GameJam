@@ -10,7 +10,9 @@ var tempoLado = 0
 var damage = 0
 const tiro1 = preload("res://scenes/ataques/TiroPeach.tscn")
 var atirar = 0
-var vida = 5
+var vida = 3
+
+signal vitoria
 
 func _ready():
 	pass # Replace with function body.
@@ -29,7 +31,7 @@ func _physics_process(delta):
 	
 	if collision:
 		if !collision.collider.is_in_group("Player"):
-			movement *= - 1
+			movement.x *= -1
 			direcao *= -1
 			update_animations()
 	
@@ -70,4 +72,5 @@ func _on_Morte_body_entered(body):
 	walk_speed += 2
 	movement = Vector2((walk_speed), 0)
 	if vida <= 0:
+		GlobalControl.get_node("CanvasLayer/HBoxContainer2").show()
 		queue_free()
