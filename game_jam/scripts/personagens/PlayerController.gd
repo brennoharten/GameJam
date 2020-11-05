@@ -50,6 +50,7 @@ func _physics_process(delta):
 	if is_on_ceiling():
 		movement.y = 0
 	
+	
 	update_animations()
 	
 	
