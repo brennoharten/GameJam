@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/atlas/mariotile.png" type="Texture" id=1]
-[ext_resource path="res://scripts/objetos/Block.gd" type="Script" id=2]
+[ext_resource path="res://scripts/objetos/BlockOver.gd" type="Script" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -357,10 +357,15 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 21/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 16, 16 )
+extents = Vector2( 15.9024, 15.9875 )
 
-[sub_resource type="Animation" id=13]
-length = 0.2
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 14.8408, 0.201611 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "Down"
+length = 10.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("TileMap:position")
 tracks/0/interp = 1
@@ -368,38 +373,51 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 16, 16 ), Vector2( 16, 0 ), Vector2( 16, 16 ) ]
+"values": [ Vector2( 16, 0 ), Vector2( 16, 650 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -15.9965 ), Vector2( 0, 650 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 10, 3.14331 )
-
-[node name="Block" type="StaticBody2D"]
+[node name="BlockOver" type="StaticBody2D"]
+position = Vector2( 2.17795, 20.5435 )
 script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2( 16, 16 )
+position = Vector2( 16, 0 )
 tile_set = SubResource( 11 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -1, 9, 0 )
+tile_data = PoolIntArray( -1, 21, 0 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -15.9965 )
 shape = SubResource( 12 )
-
-[node name="blockAnimated" type="AnimationPlayer" parent="."]
-anims/hit = SubResource( 13 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-light_mask = -2147483646
-position = Vector2( 0.396851, 17.4614 )
-shape = SubResource( 14 )
+position = Vector2( 0, -33.4026 )
+shape = SubResource( 13 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Down = SubResource( 14 )
+__meta__ = {
+"_editor_description_": ""
+}
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

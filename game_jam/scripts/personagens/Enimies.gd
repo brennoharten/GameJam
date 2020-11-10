@@ -17,7 +17,6 @@ func _physics_process(delta):
 			movement.x *= -1
 			$AnimatedSprite.scale.x *= -1
 		elif collision.collider.is_in_group("Player") && !death:
-			print("dano")
 			emit_signal("dano")
 			movement.x *= -1
 			$AnimatedSprite.scale.x *= -1

@@ -27,25 +27,27 @@ func _on_Timer_timeout():
 		$Player.gravity *= -1
 
 func _on_MorteQueda2_body_entered(body):
-	Global.perder_vida()
-	#$Control/CanvasLayer/life.set_text(str(Global.vida))
-	GlobalControl.get_node("CanvasLayer/life").set_text(str(Global.vida))
-	if Global.vida > 0: 
+	if body.is_in_group("Player"):
+		Global.perder_vida()
+		#$Control/CanvasLayer/life.set_text(str(Global.vida))
 		GlobalControl.get_node("CanvasLayer/life").set_text(str(Global.vida))
-		reset_player()
-	else:
-		#$Control/CanvasLayer/HBoxContainer.show()
-		GlobalControl.get_node("CanvasLayer/HBoxContainer").show()
+		if Global.vida > 0: 
+			GlobalControl.get_node("CanvasLayer/life").set_text(str(Global.vida))
+			reset_player()
+		else:
+			#$Control/CanvasLayer/HBoxContainer.show()
+			GlobalControl.get_node("CanvasLayer/HBoxContainer").show()
 
 func _on_MorteQueda_body_entered(body):
-	Global.perder_vida()
-	#$Control/CanvasLayer/life.set_text(str(Global.vida))
-	GlobalControl.get_node("CanvasLayer/life").set_text(str(Global.vida))
-	if Global.vida > 0:
-		reset_player()
-	else:
-		#$Control/CanvasLayer/HBoxContainer.show()
-		GlobalControl.get_node("CanvasLayer/HBoxContainer").show()
+	if body.is_in_group("Player"):
+		Global.perder_vida()
+		#$Control/CanvasLayer/life.set_text(str(Global.vida))
+		GlobalControl.get_node("CanvasLayer/life").set_text(str(Global.vida))
+		if Global.vida > 0:
+			reset_player()
+		else:
+			#$Control/CanvasLayer/HBoxContainer.show()
+			GlobalControl.get_node("CanvasLayer/HBoxContainer").show()
 
 func reset_player():
 	$Player.gravity = 30

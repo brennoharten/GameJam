@@ -26,25 +26,27 @@ func _on_Luigi_dano():
 	if Global.vida <= 0:
 		GlobalControl.get_node("CanvasLayer/HBoxContainer").show()
 		$Player.queue_free()
-	
+		
 
 func _on_MorteQueda_body_entered(body):
-	Global.perder_vida()
-	GlobalControl.get_node("CanvasLayer/life").set_text(str(Global.vida))
-	if Global.vida > 0:
-		reset_player()
-	else:
-	#$Control/CanvasLayer/HBoxContainer.show()
-		GlobalControl.get_node("CanvasLayer/HBoxContainer").show()
+	if body.is_in_group("Player"):
+		Global.perder_vida()
+		GlobalControl.get_node("CanvasLayer/life").set_text(str(Global.vida))
+		if Global.vida > 0:
+			reset_player()
+		else:
+		#$Control/CanvasLayer/HBoxContainer.show()
+			GlobalControl.get_node("CanvasLayer/HBoxContainer").show()
 
 func _on_MorteQueda2_body_entered(body):
-	Global.perder_vida()
-	GlobalControl.get_node("CanvasLayer/life").set_text(str(Global.vida))
-	if Global.vida > 0:
-		reset_player()
-	else:
-		#$Control/CanvasLayer/HBoxContainer.show()
-		GlobalControl.get_node("CanvasLayer/HBoxContainer").show()
+	if body.is_in_group("Player"):	
+		Global.perder_vida()
+		GlobalControl.get_node("CanvasLayer/life").set_text(str(Global.vida))
+		if Global.vida > 0:
+			reset_player()
+		else:
+			#$Control/CanvasLayer/HBoxContainer.show()
+			GlobalControl.get_node("CanvasLayer/HBoxContainer").show()
 
 func reset_player():
 	$Player.position.x = 41
@@ -81,8 +83,8 @@ func _on_Timer_timeout():
 	Global.tempo += 1
 	#$Control/CanvasLayer/Tempo.set_text(str(Global.tempo))
 	GlobalControl.get_node("CanvasLayer/Tempo").set_text(str(Global.tempo))
-
-
+	if Global.tempo % 15 == 0:
+		$Player.gravity *= -1
 
 
 func _on_Boss_kill_the_boss():
