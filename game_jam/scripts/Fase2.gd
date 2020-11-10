@@ -83,7 +83,7 @@ func _on_Timer_timeout():
 	Global.tempo += 1
 	#$Control/CanvasLayer/Tempo.set_text(str(Global.tempo))
 	GlobalControl.get_node("CanvasLayer/Tempo").set_text(str(Global.tempo))
-	if Global.tempo % 100 == 0:
+	if Global.tempo % 10 == 0:
 		$Player.gravity *= -1
 
 func _on_Boss_kill_the_boss():

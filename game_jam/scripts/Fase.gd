@@ -71,7 +71,8 @@ func _on_Coins__get_a_coin():
 	GlobalControl.get_node("CanvasLayer/coins").set_text(str(Global.coins))
 
 func _on_BuracoNegro_body_entered(body):
-	get_tree().change_scene("res://scenes/Fase2.tscn")
+	if body.is_in_group("Player"):
+		get_tree().change_scene("res://scenes/Fase2.tscn")
 
 func _on_Enimies_dano():
 	Global.perder_vida()
