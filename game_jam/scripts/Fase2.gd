@@ -83,10 +83,14 @@ func _on_Timer_timeout():
 	Global.tempo += 1
 	#$Control/CanvasLayer/Tempo.set_text(str(Global.tempo))
 	GlobalControl.get_node("CanvasLayer/Tempo").set_text(str(Global.tempo))
-	if Global.tempo % 15 == 0:
+	if Global.tempo % 100 == 0:
 		$Player.gravity *= -1
-
 
 func _on_Boss_kill_the_boss():
 	$Portao.hide()
 	$Portao/CollisionShape2D.set_deferred("disabled", true)
+
+
+func _on_Star_get_a_Star():
+	#$Control/CanvasLayer/coins.set_text(str(Global.coins))
+	GlobalControl.get_node("CanvasLayer/coins").set_text(str(Global.coins))
