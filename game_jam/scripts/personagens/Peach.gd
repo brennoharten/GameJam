@@ -35,17 +35,15 @@ func _physics_process(delta):
 			direcao *= -1
 			update_animations()
 	
-	if atirar == 1 and time > 1 and direcao == -1:
+	if atirar == 1 and time > 0.5 and direcao == -1:
 		var tiro = tiro1.instance()
 		get_parent().add_child(tiro)
 		tiro.position = $AnimatedSprite/Position2D.global_position
-		$AnimatedSprite.play("attack")
-		time = 0
-	elif atirar == 1 and time > 1 and direcao == 1:
-		var tiro = tiro1.instance()
-		tiro.speed *= -1
-		get_parent().add_child(tiro)
-		tiro.position = $AnimatedSprite/Position2D2.global_position
+	#elif atirar == 1 and time > 1 and direcao == 1:
+		var tiro2 = tiro1.instance()
+		tiro2.speed *= -1
+		get_parent().add_child(tiro2)
+		tiro2.position = $AnimatedSprite/Position2D2.global_position
 		$AnimatedSprite.play("attack")
 		time = 0
 	

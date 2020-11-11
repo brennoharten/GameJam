@@ -85,6 +85,7 @@ func _on_Timer_timeout():
 	GlobalControl.get_node("CanvasLayer/Tempo").set_text(str(Global.tempo))
 	if Global.tempo % 15 == 0:
 		$Player.gravity *= -1
+		
 
 func _on_Boss_kill_the_boss():
 	$Portao.hide()
